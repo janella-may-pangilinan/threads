@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            width: 100%;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #444;
+            margin: 10px auto;
+            display: block;
+            position: relative;
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            position: absolute;
+            bottom: 5px;
+            right: calc(50% - 25px);
+            border: 2px solid #111;
+        }
+
+        .username {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .followers {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 20px;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            margin-top: 10px;
+        }
+
+        .tab {
+            padding: 10px 0;
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid #fff;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #222;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            flex: 1 1 calc(50% - 10px);
+            color: #aaa;
+        }
+
+        .card button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="header">
+            <div class="profile-picture">
+                <div class="icon">👤</div>
+            </div>
+            <div class="username">Aira Mae Magat</div>
+            <div class="followers">@ayraxmey · 12 followers</div>
+        </div>
+        <div class="action-buttons">
+            <a href="edit-profile.html">Edit Profile</a>
+            <a href="share-profile.html">Share Profile</a>
+        </div>
+        <div class="tabs">
+            <div class="tab active">Threads</div>
+            <div class="tab">Replies</div>
+            <div class="tab">Reposts</div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <h3>Create thread</h3>
+                <p>Say what’s on your mind or share a recent highlight.</p>
+                <button>Create</button>
+            </div>
+            <div class="card">
+                <h3>Follow 10 profiles</h3>
+                <p>Fill your feed with threads that interest you.</p>
+                <button>See profiles</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
