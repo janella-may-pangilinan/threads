@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads News Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5em;
+            margin: 0;
+            color: #000;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .feed-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .post {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post-header .username {
+            font-weight: bold;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .post-header .timestamp {
+            margin-left: auto;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .post-content {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-around;
+            color: #555;
+        }
+
+        .post-footer button {
+            background: none;
+            border: none;
+            color: #007BFF;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .post-footer button img {
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .post-footer button:hover {
+            color: #0056b3;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Threads</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+        </nav>
+    </div>
+
+    <div class="feed-container">
+        <div class="post">
+            <div class="post-header">
+                <img src="https://via.placeholder.com/40" alt="User profile">
+                <span class="username">@username</span>
+                <span class="timestamp">2h ago</span>
+            </div>
+            <div class="post-content">
+                This is a sample post content. It can contain text, links, or anything you'd like to share.
+            </div>
+            <img src="https://via.placeholder.com/600x300" alt="Post image" class="post-image">
+            <div class="post-footer">
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/facebook-like.png" alt="Like icon">
+                    Like
+                </button>
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment icon">
+                    Comment
+                </button>
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share icon">
+                    Share
+                </button>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="post-header">
+                <img src="https://via.placeholder.com/40" alt="User profile">
+                <span class="username">@anotheruser</span>
+                <span class="timestamp">5h ago</span>
+            </div>
+            <div class="post-content">
+                Here's another example post! You can customize the content and make it interactive.
+            </div>
+            <div class="post-footer">
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/facebook-like.png" alt="Like icon">
+                    Like
+                </button>
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/comments.png" alt="Comment icon">
+                    Comment
+                </button>
+                <button>
+                    <img src="https://img.icons8.com/ios-filled/50/000000/share.png" alt="Share icon">
+                    Share
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Threads. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+</body>
+</html>
