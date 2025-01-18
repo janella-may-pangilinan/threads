@@ -4,48 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
-    <link rel="stylesheet" href="navbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
-        body {
+        body, html {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             color: #333;
         }
 
-        .navbar {
+        .sidebar {
+            width: 80px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar img {
+            width: 40px; 
+            margin-bottom: 40px; 
+        }
+
+        .sidebar i {
+            font-size: 24px;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+
+        .sidebar i:hover {
+            color: #2c3e50; 
+        }
+
+        .icons-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 50%; 
             width: 100%;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+        .icons-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .sidebar i {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar img {
+                width: 30px;
+            }
+
+            .sidebar i {
+                font-size: 22px; 
+            }
+        }
+
+        .icons-bottom i {
+            margin-bottom: 20px;
         }
 
         .header {
             padding: 15px;
             text-align: center;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
-            border-bottom: 1px solid #e0e0e0;
-            background-color: #f7f7f7;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
         }
 
         .search-bar {
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
+            position: relative;
         }
 
         .search-bar input[type="text"] {
             width: 90%;
-            padding: 10px;
+            padding: 10px 40px 10px 30px; /* Added more padding for space between icon and text */
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 20px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #bbb;
         }
 
         .account {
@@ -61,8 +134,8 @@
         }
 
         .account img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
         }
 
@@ -73,7 +146,7 @@
 
         .account-info h4 {
             margin: 0;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .account-info p {
@@ -84,50 +157,88 @@
 
         .account button {
             padding: 8px 15px;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 20px;
-            background-color: #0078ff;
-            color: #fff;
+            background-color: transparent;
+            color: #0078ff;
             font-size: 14px;
             cursor: pointer;
         }
 
         .account button:hover {
-            background-color: #005bb5;
+            background-color: #f0f0f0;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <!-- Include navbar -->
-        <?php include 'navbar.html'; ?>
+    <!-- Sidebar Navbar -->
+    <div class="sidebar">
+        <img src="img/logo.png" alt="Threads logo" />
+        <div class="icons-top">
+            <a href="ThreadsNewsFeed.html" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="search.html" title="Search">
+                <i class="fas fa-search"></i>
+            </a>
+            <i class="fas fa-plus-square"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="icons-bottom">
+            <i class="fas fa-thumbtack"></i>
+            <i class="fas fa-bars"></i>
+        </div>
     </div>
+
+    <!-- Header (Closer to the container) -->
+    <div class="header">Search</div>
+
+    <!-- Main Content -->
     <div class="container">
-        <div class="header">Search</div>
         <div class="search-bar">
             <input type="text" placeholder="Search">
+            <i class="fas fa-search"></i>
         </div>
+
+        <!-- User List -->
         <div class="account">
-            <img src="https://via.placeholder.com/40" alt="Profile">
+            <img src="img/1.jpg" alt="Profile">
             <div class="account-info">
-                <h4>selflove.diaries</h4>
-                <p>Our official FB page is 2.9 Million followers. 654K followers</p>
+                <h4>Janella May Pangilinan</h4>
+                <p>Fashionista and lifestyle influencer. 1M followers</p>
             </div>
             <button>Follow</button>
         </div>
         <div class="account">
-            <img src="https://via.placeholder.com/40" alt="Profile">
+            <img src="img/2.jpg" alt="Profile">
             <div class="account-info">
-                <h4>poetstext</h4>
-                <p>Featuring poets, writers, and artists. 233K followers</p>
+                <h4>Irish Jane Magat</h4>
+                <p>Tech enthusiast and content creator. 230K followers</p>
             </div>
             <button>Follow</button>
         </div>
         <div class="account">
-            <img src="https://via.placeholder.com/40" alt="Profile">
+            <img src="img/3.jpg" alt="Profile">
             <div class="account-info">
-                <h4>untold._.feelings</h4>
-                <p>Untold feelings, words, poetry, and more. 96.4K followers</p>
+                <h4>Aira Mae Magat</h4>
+                <p>Photography lover. Capturing moments beautifully. 110K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account">
+            <img src="img/4.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Poul Justin Maninang</h4>
+                <p>Music producer and songwriter. 350K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account">
+            <img src="img/5.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Nick Rghe Dela Cruz</h4>
+                <p>Fitness enthusiast and personal trainer. 500K followers</p>
             </div>
             <button>Follow</button>
         </div>
