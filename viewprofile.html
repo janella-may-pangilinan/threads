@@ -1,174 +1,88 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .profile-container {
-            max-width: 600px;
-            width: 100%;
-            background: #111;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid #333;
-            position: relative;
-        }
-
-        .profile-picture {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid #444;
-            margin: 10px auto;
-            display: block;
-            position: relative;
-        }
-
-        .icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 36px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 2px solid #111;
-        }
-
-        .username {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .followers {
-            font-size: 0.9em;
-            color: #aaa;
-        }
-
-        .action-buttons {
-            display: flex;
-            justify-content: space-around;
-            margin: 15px 20px;
-        }
-
-        .action-buttons a {
-            text-decoration: none;
-            background: #222;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: space-around;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
-            margin-top: 10px;
-        }
-
-        .tab {
-            padding: 10px 0;
-            text-align: center;
-            flex: 1;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-
-        .tab.active {
-            border-bottom: 2px solid #fff;
-            font-weight: bold;
-        }
-
-        .content {
-            padding: 20px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: #222;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            flex: 1 1 calc(50% - 10px);
-            color: #aaa;
-        }
-
-        .card button {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="profile-container">
-        <div class="header">
-            <div class="profile-picture">
-                <div class="icon">👤</div>
-            </div>
-            <div class="username">Aira Mae Magat</div>
-            <div class="followers">@ayraxmey · 12 followers</div>
-        </div>
-        <div class="action-buttons">
-            <a href="edit-profile.html">Edit Profile</a>
-            <a href="share-profile.html">Share Profile</a>
-        </div>
-        <div class="tabs">
-            <div class="tab active">Threads</div>
-            <div class="tab">Replies</div>
-            <div class="tab">Reposts</div>
-        </div>
-        <div class="content">
-            <div class="card">
-                <h3>Create thread</h3>
-                <p>Say what’s on your mind or share a recent highlight.</p>
-                <button>Create</button>
-            </div>
-            <div class="card">
-                <h3>Follow 10 profiles</h3>
-                <p>Fill your feed with threads that interest you.</p>
-                <button>See profiles</button>
-            </div>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Profile Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100">
+  <div class="max-w-4xl mx-auto p-4">
+   <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center space-x-2">
+     <button class="text-2xl">
+      <i class="fas fa-arrow-left">
+      </i>
+     </button>
+     <h1 class="text-xl font-bold">
+      ij_mgt
+     </h1>
     </div>
-</body>
+    <button class="bg-black text-white px-4 py-2 rounded">
+     Log in
+    </button>
+   </div>
+   <div class="bg-white p-4 rounded-lg shadow">
+    <div class="flex items-center space-x-4">
+     <img alt="ij_mgt's profile picture" class="w-20 h-20 rounded-full" height="100" src="https://storage.googleapis.com/a1aa/image/ptKETheUfOUOhGbJXUqiDDxVxEY58jMdIlsDOLxoSTs.jpg" width="100"/>
+     <div>
+      <h2 class="text-2xl font-bold">
+       Irish Jane Magat
+      </h2>
+      <p class="text-gray-500">
+       @ij_mgt
+      </p>
+      <p class="text-gray-500">
+       threads.net
+      </p>
+      <p class="text-gray-500">
+       6 followers
+      </p>
+     </div>
+    </div>
+    <div class="flex space-x-4 mt-4">
+     <button class="bg-black text-white px-4 py-2 rounded">
+      Follow
+     </button>
+     <button class="border border-gray-300 px-4 py-2 rounded">
+      Mention
+     </button>
+    </div>
+    <div class="mt-4">
+     <ul class="flex space-x-4 border-b border-gray-300">
+      <li class="pb-2 border-b-2 border-black">
+       Threads
+      </li>
+      <li class="pb-2">
+       Replies
+      </li>
+      <li class="pb-2">
+       Reposts
+      </li>
+     </ul>
+    </div>
+    <div class="mt-4">
+     <div class="flex items-start space-x-4">
+      <img alt="ij_mgt profile picture" class="w-12 h-12 rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/4IsI4-4xpWLpkXQ-UEiL6TXHjAOEX8Qx7mmsXwEj__g.jpg" width="50"/>
+      <div>
+       <p class="text-gray-500">
+        ij_mgt
+        <span class="text-gray-400">
+         09/13/2024
+        </span>
+       </p>
+       <div class="grid grid-cols-3 gap-2 mt-2">
+        <img alt="Image 1" class="w-full h-auto rounded-lg" height="150" src="https://storage.googleapis.com/a1aa/image/Fh4ZoDppKL1azRATuSKU_VmVHPGSq7ssZmyUh04OQdk.jpg" width="150"/>
+        <img alt="Image 2" class="w-full h-auto rounded-lg" height="150" src="https://storage.googleapis.com/a1aa/image/7sCMTTBHvjdAblZmkpgaqEtCNaCFI951Y6xVptMGaok.jpg" width="150"/>
+        <img alt="Image 3" class="w-full h-auto rounded-lg" height="150" src="https://storage.googleapis.com/a1aa/image/xm13n5nkbaMPwKs_dlAHuwT-UyA6-uvIsBOnJIBlTcA.jpg" width="150"/>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
 </html>
