@@ -43,11 +43,24 @@
             align-items: center;
             padding-top: 20px;
         }
-        .sidebar i {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #000000;
-        }
+        .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.sidebar i {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sidebar i:hover {
+    transform: scale(1.2);
+    color: #007bff;
+}
+
         .content {
             margin-left: 60px;
             padding: 20px;
@@ -145,17 +158,48 @@
    <input placeholder="Search" type="text"/>
   </div>
   <div class="sidebar">
-   <i class="fas fa-home">
-   </i>
-   <i class="fas fa-search">
-   </i>
-   <i class="fas fa-plus-square">
-   </i>
-   <i class="fas fa-heart">
-   </i>
-   <i class="fas fa-user">
-   </i>
-  </div>
+    <div class="sidebar">
+        <div class="sidebar">
+            <i class="fas fa-home" onclick="goToHome()" title="Home"></i>
+            <i class="fas fa-search" onclick="openSearch()" title="Search"></i>
+            <i class="fas fa-plus-square" onclick="createPost()" title="Create Post"></i>
+            <i class="fas fa-heart" onclick="viewNotifications()" title="Notifications"></i>
+            <i class="fas fa-user" onclick="viewProfile()" title="Profile"></i>
+         </div>
+         
+     </div>
+     
+</div>
+
+<script>
+   function goToHome() {
+    // Redirect user to the Home page
+    window.location.href = '/home'; // Palitan ang '/home' ng tamang URL ng iyong Home page
+}
+
+function openSearch() {
+    // Redirect user to the Search page
+    window.location.href = '/search'; // Palitan ang '/search' ng tamang URL ng iyong Search page
+}
+
+function createPost() {
+    // Redirect user to the Create Post page
+    window.location.href = '/create-post'; // Palitan ang '/create-post' ng tamang URL ng iyong Create Post page
+}
+
+function viewNotifications() {
+    // Redirect user to the Notifications page
+    window.location.href = '/notifications'; // Palitan ang '/notifications' ng tamang URL ng iyong Notifications page
+}
+
+function viewProfile() {
+    // Redirect user to the Profile page
+    window.location.href = '/profile'; // Palitan ang '/profile' ng tamang URL ng iyong Profile page
+}
+
+
+</script>
+
   <div class="content">
    <div class="status-update">
     <textarea placeholder="What's on your mind?" rows="3"></textarea>
@@ -325,7 +369,7 @@
      <div class="post-user">
       diana_r
      </div>
-     <div class="post-time">
+     <div class="post-time">    
       7h
      </div>
     </div>

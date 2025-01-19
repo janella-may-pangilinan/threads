@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <script>
+        function goToHome() {
+            window.location.href = '/home';
+        }
+
+        function openSearch() {
+            window.location.href = '/search';
+        }
+
+        function createPost() {
+            window.location.href = '/create-post';
+        }
+
+        function viewNotifications() {
+            window.location.href = '/notifications';
+        }
+
+        function viewProfile() {
+            window.location.href = '/profile';
+        }
+    </script>
+    <style>
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .sidebar i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .sidebar i:hover {
+            transform: scale(1.2);
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <i class="fas fa-home" onclick="goToHome()" title="Home"></i>
+        <i class="fas fa-search" onclick="openSearch()" title="Search"></i>
+        <i class="fas fa-plus-square" onclick="createPost()" title="Create Post"></i>
+        <i class="fas fa-heart" onclick="viewNotifications()" title="Notifications"></i>
+        <i class="fas fa-user" onclick="viewProfile()" title="Profile"></i>
+    </div>
+</body>
+</html>
