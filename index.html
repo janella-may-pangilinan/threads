@@ -160,7 +160,7 @@
         <div class="login-header">
             <h2>Log in with your Instagram account</h2>
         </div>
-        <form action="ThreadsNewsFeed.html" method="post">
+        <form action="ThreadsNewsFeed.html" method="POST">
             <div class="form-group">
                 <label for="username">Username, phone or email</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -195,19 +195,18 @@
         </div>
     </div>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Dummy login validation
-            if (username === "user" && password === "password") {
-                window.location.href = "ThreadsNewsFeed.html"; // Redirect to home page
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent form from actually submitting
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+        
+            if (username === "testuser" && password === "testpassword") {
+                window.location.href = "ThreadsNewsFeed.html";
             } else {
-                alert("Invalid username or password!");
+                alert("Invalid username or password.");
             }
         });
+        
     </script>
 </body>
 </html>
