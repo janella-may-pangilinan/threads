@@ -1,281 +1,322 @@
+<!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Activity - Threads
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-   body {
-            font-family: Arial, sans-serif;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-        }
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 60px;
-            background-color: #fff;
-            border-right: 1px solid #ddd;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
-        .sidebar i {
-            font-size: 24px;
-            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
             color: #333;
         }
-        .content {
-            flex: 1;
+
+        .sidebar {
+            width: 80px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-        .header {
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            padding-top: 40px;
+            top: 0;
+            left: 0;
         }
-        .header h1 {
-            font-size: 18px;
-            margin: 0;
+
+        .sidebar img {
+            width: 40px;
+            margin-bottom: 40px;
         }
-        .header .more-options {
+
+        .sidebar i {
             font-size: 24px;
-            cursor: pointer;
+            color: #bdc3c7;
+            transition: color 0.3s;
         }
-        .activity-feed {
+
+        .sidebar i:hover {
+            color: #2c3e50;
+        }
+
+        .icons-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 50%;
+            width: 100%;
+        }
+
+        .icons-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .sidebar i {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar img {
+                width: 30px;
+            }
+
+            .sidebar i {
+                font-size: 22px;
+            }
+        }
+
+        .icons-bottom i {
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-left: 80px;
             padding: 20px;
+            background-color: #fff;
+            height: 100vh;
             overflow-y: auto;
         }
-        .activity-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+
+        .header {
             padding: 15px;
-            margin-bottom: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
         }
-        .activity-item img {
-            border-radius: 50%;
+
+        .post-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        .post {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .post img {
             width: 40px;
             height: 40px;
+            border-radius: 50%;
             margin-right: 10px;
         }
-        .activity-item .header {
+
+        .post .post-header {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
-        .activity-item .header .name {
+
+        .post .post-header .username {
             font-weight: bold;
             margin-right: 10px;
         }
-        .activity-item .header .time {
+
+        .post .post-header .time {
             color: #888;
             font-size: 12px;
         }
-        .activity-item .content {
-            margin-top: 10px;
+
+        .post .post-header .picked-for-you {
+            color: #888;
+            font-size: 12px;
+            margin-left: auto;
         }
-        .activity-item .footer {
+
+        .post .post-content {
+            margin-bottom: 10px;
+        }
+
+        .post .post-actions {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
         }
-        .activity-item .footer .actions {
+
+        .post .post-actions .action {
+            margin-right: 20px;
             display: flex;
             align-items: center;
         }
-        .activity-item .footer .actions i {
+
+        .post .post-actions .action i {
             margin-right: 5px;
-            color: #888;
         }
-        .activity-item .footer .actions span {
-            margin-right: 15px;
-            color: #888;
-            font-size: 12px;
+
+        .follow-suggestion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .activity-item .footer .follow-btn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
+
+        .follow-suggestion .follow-button {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #0078ff;
+            font-size: 14px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-  </style>
- </head>
- <body>
-  <div class="container">
-   <div class="sidebar">
-    <i class="fas fa-home">
-    </i>
-    <i class="fas fa-search">
-    </i>
-    <i class="fas fa-plus">
-    </i>
-    <i class="fas fa-heart">
-    </i>
-    <i class="fas fa-user">
-    </i>
-   </div>
-   <div class="content">
-    <div class="header">
-     <h1>
-      Activity
-     </h1>
-     <i class="fas fa-ellipsis-h more-options">
-     </i>
+
+        .follow-suggestion .follow-button:hover {
+            background-color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="img/logo.png" alt="Threads logo" height="40" src="https://storage.googleapis.com/a1aa/image/RDOfLH3f0Tr7gUsF1yP5tfeFM5mUZFJ7xu14Sk3PwjhCsQaQB.jpg"/>
+        <div class="icons-top">
+            <a href="ThreadsNewsFeed.html" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="search.html" title="Search">
+                <i class="fas fa-search"></i>
+            </a>
+            <a href="post.html" title="AddPost">
+            <i class="fas fa-plus-square"></i>
+        </a>
+        <a href="activity.html" title="Activity">
+            <i class="fas fa-heart"></i>
+        </a>
+        <a href="viewprofile.html" title="Profile">
+            <i class="fas fa-user"></i>
+        </a>
+        </div>
+        <div class="icons-bottom">
+            <i class="fas fa-thumbtack"></i>
+            <a href="settings.html" title="Settings">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
     </div>
-    <div class="activity-feed">
-     <div class="activity-item">
-      <div class="header">
-       <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/ZMb7JHf4wOwKDiikZKfAiGe94WusFsAYVxzlVdulzJdD5GNoA.jpg" width="40"/>
-       <div>
-        <div class="name">
-         deyyybsu
+    
+    <div class="content">
+        <div class="header">Activity</div>
+        
+        <!-- Post 1 -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-header">
+                    <img src="img/3.jpg" alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/jc2wPagSJf1aW6B6CgeZ2UGcCxT5XpD8tu7YhD7i6GXfVINoA.jpg"/>
+                    <div class="username">deyyybsu</div>
+                    <div class="time">13h</div>
+                    <div class="picked-for-you">Picked for you</div>
+                </div>
+                <div class="post-content">
+                    Ako lang ba? Whenever I go out on a date, one of the questions na gina ask ko is about his previous relationship. Like, are they in good terms sa ex niya, what is the reason nag stop sila, minsan gina pa describe nako iyang ex saiya. Dili sa naki...
+                </div>
+                <div class="post-actions">
+                    <div class="action"><i class="fas fa-heart"></i> 712</div>
+                    <div class="action"><i class="fas fa-comment"></i> 74</div>
+                    <div class="action"><i class="fas fa-retweet"></i> 133</div>
+                    <div class="action"><i class="fas fa-share"></i> 7</div>
+                </div>
+            </div>
         </div>
-        <div class="time">
-         13h
+        
+        <!-- Post 2 -->
+        <div class="post-container">
+            <div class="post follow-suggestion">
+                <div>
+                    <div class="post-header">
+                        <img src="img/2.jpg" alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/jc2wPagSJf1aW6B6CgeZ2UGcCxT5XpD8tu7YhD7i6GXfVINoA.jpg"/>
+                        <div class="username">prexuss_magat</div>
+                        <div class="time">16h</div>
+                    </div>
+                    <div class="picked-for-you">Follow suggestion</div>
+                </div>
+                <button class="follow-button">Follow</button>
+            </div>
         </div>
-       </div>
-      </div>
-      <div class="content">
-       Picked for you
-       <br/>
-       Ako lang ba? Whenever I go out on a date, one of the questions na gina ask ko is about his previous relationship. Like, are they in good terms sa ex niya, what is the reason nag stop sila, minsan gina pa describe nako iyang ex saiya. Dili sa naki...
-      </div>
-      <div class="footer">
-       <div class="actions">
-        <i class="fas fa-heart">
-        </i>
-        <span>
-         712
-        </span>
-        <i class="fas fa-comment">
-        </i>
-        <span>
-         74
-        </span>
-        <i class="fas fa-retweet">
-        </i>
-        <span>
-         133
-        </span>
-        <i class="fas fa-share">
-        </i>
-        <span>
-         7
-        </span>
-       </div>
-      </div>
-     </div>
-     <div class="activity-item">
-      <div class="header">
-       <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/ZMb7JHf4wOwKDiikZKfAiGe94WusFsAYVxzlVdulzJdD5GNoA.jpg" width="40"/>
-       <div>
-        <div class="name">
-         prexuss_magat
+
+        <!-- Post 3 -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-header">
+                    <img src="img/5.jpg" alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/jc2wPagSJf1aW6B6CgeZ2UGcCxT5XpD8tu7YhD7i6GXfVINoA.jpg"/>
+                    <div class="username">maria_eloise</div>
+                    <div class="time">20h</div>
+                    <div class="picked-for-you">Picked for you</div>
+                </div>
+                <div class="post-content">
+                    Can you guys suggest some fun weekend activities? I'm looking for something new to try!
+                </div>
+                <div class="post-actions">
+                    <div class="action"><i class="fas fa-heart"></i> 220</div>
+                    <div class="action"><i class="fas fa-comment"></i> 50</div>
+                    <div class="action"><i class="fas fa-retweet"></i> 33</div>
+                    <div class="action"><i class="fas fa-share"></i> 15</div>
+                </div>
+            </div>
         </div>
-        <div class="time">
-         16h
+
+        <!-- Post 4 -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-header">
+                    <img src="img/4.jpg" alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/jc2wPagSJf1aW6B6CgeZ2UGcCxT5XpD8tu7YhD7i6GXfVINoA.jpg"/>
+                    <div class="username">jack_norris</div>
+                    <div class="time">2d</div>
+                    <div class="picked-for-you">Picked for you</div>
+                </div>
+                <div class="post-content">
+                    Just finished my workout and feeling amazing! What's your favorite way to stay active?
+                </div>
+                <div class="post-actions">
+                    <div class="action"><i class="fas fa-heart"></i> 312</div>
+                    <div class="action"><i class="fas fa-comment"></i> 122</div>
+                    <div class="action"><i class="fas fa-retweet"></i> 47</div>
+                    <div class="action"><i class="fas fa-share"></i> 8</div>
+                </div>
+            </div>
         </div>
-       </div>
-      </div>
-      <div class="footer">
-       <button class="follow-btn">
-        Follow
-       </button>
-      </div>
-     </div>
-     <div class="activity-item">
-      <div class="header">
-       <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/ZMb7JHf4wOwKDiikZKfAiGe94WusFsAYVxzlVdulzJdD5GNoA.jpg" width="40"/>
-       <div>
-        <div class="name">
-         dabbiidddd
+
+        <!-- Post 5 -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-header">
+                    <img src="img/1.jpg" alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/jc2wPagSJf1aW6B6CgeZ2UGcCxT5XpD8tu7YhD7i6GXfVINoA.jpg"/>
+                    <div class="username">angela_ryan</div>
+                    <div class="time">4d</div>
+                    <div class="picked-for-you">Picked for you</div>
+                </div>
+                <div class="post-content">
+                    Do you think it's better to live in a city or the countryside? I’m torn between both options.
+                </div>
+                <div class="post-actions">
+                    <div class="action"><i class="fas fa-heart"></i> 184</div>
+                    <div class="action"><i class="fas fa-comment"></i> 45</div>
+                    <div class="action"><i class="fas fa-retweet"></i> 12</div>
+                    <div class="action"><i class="fas fa-share"></i> 5</div>
+                </div>
+            </div>
         </div>
-        <div class="time">
-         1d
-        </div>
-       </div>
-      </div>
-      <div class="content">
-       Picked for you
-       <br/>
-       masyado akong hopeless romantic para gumamit ng dating apps, i believe love takes time talaga
-      </div>
-      <div class="footer">
-       <div class="actions">
-        <i class="fas fa-heart">
-        </i>
-        <span>
-         2.3K
-        </span>
-        <i class="fas fa-comment">
-        </i>
-        <span>
-         48
-        </span>
-        <i class="fas fa-retweet">
-        </i>
-        <span>
-         700
-        </span>
-        <i class="fas fa-share">
-        </i>
-        <span>
-         25
-        </span>
-       </div>
-      </div>
-     </div>
-     <div class="activity-item">
-      <div class="header">
-       <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/ZMb7JHf4wOwKDiikZKfAiGe94WusFsAYVxzlVdulzJdD5GNoA.jpg" width="40"/>
-       <div>
-        <div class="name">
-         ayraxmey
-        </div>
-        <div class="time">
-         1d
-        </div>
-       </div>
-      </div>
-      <div class="footer">
-       <button class="follow-btn">
-        Follow
-       </button>
-      </div>
-     </div>
-     <div class="activity-item">
-      <div class="header">
-       <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/ZMb7JHf4wOwKDiikZKfAiGe94WusFsAYVxzlVdulzJdD5GNoA.jpg" width="40"/>
-       <div>
-        <div class="name">
-         jaykieed
-        </div>
-        <div class="time">
-         2d
-        </div>
-       </div>
-      </div>
-      <div class="content">
-       Picked for you
-       <br/>
-       kaya nako ni (nihilak).
-      </div>
-     </div>
     </div>
-   </div>
-  </div>
- </body>
+</body>
 </html>

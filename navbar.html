@@ -1,196 +1,199 @@
-<html>
- <head>
-  <title>Threads</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-   body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5;
-    }
-    .navbar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        background-color: #ffffff;
-        border-bottom: 1px solid #e0e0e0;
-    }
-    .navbar img {
-        height: 24px;
-        margin-right: 10px;
-    }
-    .navbar input {
-        flex: 1;
-        padding: 5px 10px;
-        border: 1px solid #e0e0e0;
-        border-radius: 20px;
-        max-width: 400px;
-        margin-left: 10px; /* Adds space between the magnifying glass and the input field */
-    }
-    .sidebar {
-        width: 60px;
-        background-color: #ffffff;
-        border-right: 1px solid #e0e0e0;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 20px;
-    }
-    .sidebar i {
-        font-size: 24px;
-        margin: 20px 0;
-        color: #000000;
-    }
-    .content {
-        margin-left: 60px;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-    .post {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        max-width: 500px;
-        width: 100%;
-    }
-    .post img {
-        width: 100%;
-        border-radius: 10px;
-    }
-    .post .post-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-    .post .post-header img {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-    }
-    .post .post-header .post-user {
-        font-weight: bold;
-    }
-    .post .post-header .post-time {
-        color: #888888;
-        margin-left: 10px;
-    }
-    .post .post-content {
-        margin-bottom: 10px;
-    }
-    .post .post-actions {
-        display: flex;
-        justify-content: space-between;
-        width: 100px;
-        margin-top: 10px;
-    }
-    .post .post-actions i {
-        color: #888888;
-        cursor: pointer;
-    }
-    .login-button {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #000000;
-        color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 20px;
-        cursor: pointer;
-    }
-    .status-update {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        max-width: 500px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .status-update textarea {
-        width: 100%;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 10px;
-        resize: none;
-    }
-    .status-update button {
-        background-color: #000000;
-        color: #ffffff;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
-        margin-top: 10px;
-        cursor: pointer;
-    }
-  </style>
- </head>
- <body>
-  <div class="navbar">
-   <img alt="Threads logo" height="24" src="https://storage.googleapis.com/a1aa/image/PpHJm_WxWd00WM2t6JiKTD8KFcQocs-uzgR_sqqsUB0.jpg" width="24"/>
-   <input placeholder="Search" type="text"/>
-  </div>
-  <div class="sidebar">
-   <i class="fas fa-home"></i>
-   <i class="fas fa-search"></i>
-   <i class="fas fa-plus-square"></i>
-   <i class="fas fa-heart"></i>
-   <i class="fas fa-user"></i>
-  </div>
-  <div class="content">
-   <div class="status-update">
-    <textarea placeholder="What's on your mind?" rows="3"></textarea>
-    <button onclick="postStatus()">Post</button>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">mlbonfox</div>
-     <div class="post-time">6h</div>
-    </div>
-    <div class="post-content">The Dodgers rotation is STACKED 😍</div>
-    <img alt="Dodgers rotation options poster" height="600" src="https://storage.googleapis.com/a1aa/image/mXrY43_IlO9G-HcrPf3Be3tkEWSP39wCBat2De_Hob8.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)"></i>
-     <i class="fas fa-comment" onclick="commentPost()"></i>
-     <i class="fas fa-share" onclick="sharePost()"></i>
-    </div>
-   </div>
-  </div>
-  <div class="login-button">Log in</div>
-  <script>
-   function likePost(element) {
-        if (element.style.color === 'red') {
-            element.style.color = '#888888';
-        } else {
-            element.style.color = 'red';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
         }
-    }
 
-    function commentPost() {
-        alert('Comment functionality is not implemented yet.');
-    }
+        .sidebar {
+            width: 80px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            top: 0;
+            left: 0;
+        }
 
-    function sharePost() {
-        alert('Share functionality is not implemented yet.');
-    }
+        .sidebar img {
+            width: 40px; 
+            margin-bottom: 40px; 
+        }
 
-    function postStatus() {
-        alert('Status update functionality is not implemented yet.');
-    }
-  </script>
- </body>
+        .sidebar i {
+            font-size: 24px;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+
+        .sidebar i:hover {
+            color: #2c3e50; 
+        }
+
+        .icons-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 50%; 
+            width: 100%;
+        }
+
+        .icons-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .sidebar i {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar img {
+                width: 30px;
+            }
+
+            .sidebar i {
+                font-size: 22px; 
+            }
+        }
+
+        .icons-bottom i {
+            margin-bottom: 20px;
+        }
+
+        .header {
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .search-bar {
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .search-bar input[type="text"] {
+            width: 90%;
+            padding: 10px 40px 10px 30px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #bbb;
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .account:last-child {
+            border-bottom: none;
+        }
+
+        .account img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .account-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .account-info h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .account-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .account button {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #0078ff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .account button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <img src="img/logo.png" alt="Threads logo" />
+        <div class="icons-top">
+            <a href="ThreadsNewsFeed.html" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="search.html" title="Search">
+                <i class="fas fa-search"></i>
+            </a>
+            <i class="fas fa-plus-square"></i>
+            <a href="activity.html" title="Activity">
+                <i class="fas fa-heart"></i>
+            </a>
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="icons-bottom">
+            <i class="fas fa-thumbtack"></i>
+            <a href="settings.html" title="Settings">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+</body>
 </html>
