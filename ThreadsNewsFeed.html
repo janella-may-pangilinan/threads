@@ -4,414 +4,453 @@
    Threads
   </title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
   <style>
    body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-        }
-        .navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
             background-color: #ffffff;
+            display: flex;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .header {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
-        .navbar img {
-            height: 24px;
-            margin-right: 10px;
+        .header img {
+            height: 30px;
         }
-        .navbar input {
-            flex: 1;
+        .header .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
             padding: 5px 10px;
-            border: 1px solid #e0e0e0;
             border-radius: 20px;
-            max-width: 400px;
+        }
+        .header .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            margin-left: 10px;
         }
         .sidebar {
-            width: 60px;
+            width: 80px;
             background-color: #ffffff;
-            border-right: 1px solid #e0e0e0;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            border-right: 1px solid #e0e0e0;
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 1000;
+        }
+        .sidebar img {
+            height: 30px;
+            margin-bottom: 40px;
+        }
+        .sidebar .icon {
+            font-size: 24px;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+        .sidebar .icon:hover {
+            color: #000;
+        }
+        .icons-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 50%;
+            width: 100%;
+        }
+        .icons-bottom {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 20px;
+            margin-top: 50px;
         }
-        .sidebar i {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #000000;
+        .sidebar .icon {
+            margin: 10px 0;
         }
         .content {
-            margin-left: 60px;
-            padding: 20px;
+            flex: 1;
+            padding: 80px 20px 20px 100px;
+            max-width: 600px;
+            margin-left: 80px;
+        }
+        .new-post {
             display: flex;
-            justify-content: center;
-            flex-direction: column;
             align-items: center;
+            background-color: #f0f0f0;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+        .new-post input {
+            border: none;
+            outline: none;
+            flex: 1;
+            margin-left: 10px;
+            background-color: #f0f0f0;
+        }
+        .new-post button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
         }
         .post {
             background-color: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
-            padding: 20px;
             margin-bottom: 20px;
-            max-width: 500px;
-            width: 100%;
+            padding: 15px;
         }
-        .post img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .post .post-header {
+        .post .user-info {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
-        .post .post-header img {
-            height: 40px;
-            width: 40px;
+        .post .user-info img {
             border-radius: 50%;
+            width: 40px;
+            height: 40px;
             margin-right: 10px;
         }
-        .post .post-header .post-user {
-            font-weight: bold;
+        .post .user-info .username {
+            font-weight: 500;
         }
-        .post .post-header .post-time {
-            color: #888888;
-            margin-left: 10px;
+        .post .user-info .time {
+            color: #888;
+            font-size: 12px;
         }
-        .post .post-content {
-            margin-bottom: 10px;
+        .post .content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
         }
-        .post .post-actions {
+        .post .actions {
             display: flex;
             justify-content: space-between;
-            width: 100px;
             margin-top: 10px;
         }
-        .post .post-actions i {
-            color: #888888;
-            cursor: pointer;
-        }
-        .login-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #000000;
-            color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-        .status-update {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            max-width: 500px;
-            width: 100%;
+        .post .actions .action {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            color: #888;
+            margin-right: 15px;
         }
-        .status-update textarea {
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 10px;
-            resize: none;
+        .post .actions .action i {
+            margin-right: 5px;
         }
-        .status-update button {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            margin-top: 10px;
-            cursor: pointer;
+        .post .actions .action span {
+            font-size: 14px;
+        }
+        .for-you {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
         }
   </style>
  </head>
  <body>
-  <div class="navbar">
-   <img alt="Threads logo" height="24" src="https://storage.googleapis.com/a1aa/image/PpHJm_WxWd00WM2t6JiKTD8KFcQocs-uzgR_sqqsUB0.jpg" width="24"/>
-   <input placeholder="Search" type="text"/>
-  </div>
   <div class="sidebar">
-   <i class="fas fa-home">
-   </i>
-   <i class="fas fa-search">
-   </i>
-   <i class="fas fa-plus-square">
-   </i>
-   <i class="fas fa-heart">
-   </i>
-   <i class="fas fa-user">
-   </i>
-  </div>
-  <div class="content">
-   <div class="status-update">
-    <textarea placeholder="What's on your mind?" rows="3"></textarea>
-    <button onclick="postStatus()">Post</button>
+   <img alt="Threads logo" height="30" src="https://storage.googleapis.com/a1aa/image/Azu2BGYH0triMNZ8CVI9guz1gzOdk01GKiefanfuXPvLMGNoA.jpg" width="30"/>
+   <div class="icons-top">
+    <i class="fas fa-home icon active">
+    </i>
+    <i class="fas fa-search icon">
+    </i>
+    <i class="fas fa-plus icon">
+    </i>
+    <i class="fas fa-heart icon">
+    </i>
+    <i class="fas fa-user icon">
+    </i>
    </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      mlbonfox
-     </div>
-     <div class="post-time">
-      6h
-     </div>
-    </div>
-    <div class="post-content">
-     The Dodgers rotation is STACKED 😍
-    </div>
-    <img alt="Dodgers rotation options poster" height="600" src="https://storage.googleapis.com/a1aa/image/mXrY43_IlO9G-HcrPf3Be3tkEWSP39wCBat2De_Hob8.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      fatmah_j
-     </div>
-     <div class="post-time">
-      18h
-     </div>
-    </div>
-    <img alt="Image of a view from a window with a table and a cup" height="600" src="https://storage.googleapis.com/a1aa/image/qndorud4-Q3AaI1Oi5JRqA0Qg0ZUsaIoDZA730ZhTE8.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      john_doe
-     </div>
-     <div class="post-time">
-      2h
-     </div>
-    </div>
-    <div class="post-content">
-     Just finished a great book! 📚
-    </div>
-    <img alt="Book cover" height="600" src="https://storage.googleapis.com/a1aa/image/OFp-ziqR6NyCQ3r3ag_ENS5xqudJEjiQnh_EI67l43I.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      jane_smith
-     </div>
-     <div class="post-time">
-      4h
-     </div>
-    </div>
-    <div class="post-content">
-     Can't wait for the weekend! 🎉
-    </div>
-    <img alt="Weekend plans" height="600" src="https://storage.googleapis.com/a1aa/image/F_zDZJRDOddVvp_pIwuHtF2_Kxr-18THzR54P3NRFbE.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      alice_w
-     </div>
-     <div class="post-time">
-      1h
-     </div>
-    </div>
-    <div class="post-content">
-     Enjoying a sunny day at the beach! 🏖️
-    </div>
-    <img alt="Sunny beach" height="600" src="https://storage.googleapis.com/a1aa/image/PWxc4OtBFFxH66huzBZ971ZQ2rPaOJeNfvXIExp008I.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      bob_k
-     </div>
-     <div class="post-time">
-      3h
-     </div>
-    </div>
-    <div class="post-content">
-     Just cooked a delicious meal! 🍲
-    </div>
-    <img alt="Delicious meal" height="600" src="https://storage.googleapis.com/a1aa/image/IoSnC6oQmQQZgZAIsGF7ncQzU4SNPD2VhhqbFhDWwJI.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      charlie_m
-     </div>
-     <div class="post-time">
-      5h
-     </div>
-    </div>
-    <div class="post-content">
-     Hiking in the mountains! 🏔️
-    </div>
-    <img alt="Mountain hike" height="600" src="https://storage.googleapis.com/a1aa/image/I0ze7v1xzs2qiz4F-fi8r3WV_mj3ILaFdJbNqkgVr3Q.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      diana_r
-     </div>
-     <div class="post-time">
-      7h
-     </div>
-    </div>
-    <div class="post-content">
-     New art project! 🎨
-    </div>
-    <img alt="Art project" height="600" src="https://storage.googleapis.com/a1aa/image/pYYFjeo99tRrEPxm2gBc67-H7uxviOr6lWYr5RK2tjg.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      emily_s
-     </div>
-     <div class="post-time">
-      8h
-     </div>
-    </div>
-    <div class="post-content">
-     Just adopted a new puppy! 🐶
-    </div>
-    <img alt="New puppy" height="600" src="https://storage.googleapis.com/a1aa/image/16xd4Yit1J_soURKdya0oTFbQt0V5Pa1JY7A05dpzFI.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
-   </div>
-   <div class="post">
-    <div class="post-header">
-     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/m4oXCDLi1j3PfoUsv3lwQUveDIuMf9f6i3VBNrlgctI.jpg" width="40"/>
-     <div class="post-user">
-      frank_t
-     </div>
-     <div class="post-time">
-      9h
-     </div>
-    </div>
-    <div class="post-content">
-     Watching a beautiful sunset! 🌅
-    </div>
-    <img alt="Beautiful sunset" height="600" src="https://storage.googleapis.com/a1aa/image/WlmKaUindLCsXVW3IE3UiEgBTrcYCFeZTJ25Xf7pxqQ.jpg" width="400"/>
-    <div class="post-actions">
-     <i class="fas fa-heart" onclick="likePost(this)">
-     </i>
-     <i class="fas fa-comment" onclick="commentPost()">
-     </i>
-     <i class="fas fa-share" onclick="sharePost()">
-     </i>
-    </div>
+   <div class="icons-bottom">
+    <i class="fas fa-thumbtack icon">
+    </i>
+    <i class="fas fa-bars icon">
+    </i>
    </div>
   </div>
-  <div class="login-button">
-   Log in
+  <div class="container">
+   <div class="content">
+    <div class="for-you">
+     For you
+    </div>
+    <div class="new-post">
+     <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+     <input placeholder="What's new?" type="text"/>
+     <button>
+      Post
+     </button>
+    </div>
+    <div class="post">
+     <div class="user-info">
+      <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+      <div>
+       <div class="username">
+        acma.lyn
+       </div>
+       <div class="time">
+        1h
+       </div>
+      </div>
+     </div>
+     <div class="content">
+      <p>
+       I wish
+      </p>
+      <img alt="Text image: in my silent day, i wish my parents knows how hard i try to make them proud." height="300" src="https://storage.googleapis.com/a1aa/image/SPs569eVNnyUdqWQlOeOmUstnfDpKaGhiq23hnKXO5GOMGNoA.jpg" width="500"/>
+     </div>
+     <div class="actions">
+      <div class="action">
+       <i class="fas fa-heart">
+       </i>
+       <span>
+        159
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-comment">
+       </i>
+       <span>
+        50
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-share">
+       </i>
+       <span>
+        2
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-retweet">
+       </i>
+       <span>
+        2
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="post">
+     <div class="user-info">
+      <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+      <div>
+       <div class="username">
+        sadpoemsprettypeople
+       </div>
+       <div class="time">
+        22h
+       </div>
+      </div>
+     </div>
+     <div class="content">
+      <p>
+       i didn't deserve that, you knew it too
+      </p>
+      <img alt="Text image: i didn't deserve that, you knew it too" height="300" src="https://storage.googleapis.com/a1aa/image/ViyfQLI78r2BL68kKw1iK93YGtX2InaFEGxVT8fHSw7CGjGUA.jpg" width="500"/>
+     </div>
+     <div class="actions">
+      <div class="action">
+       <i class="fas fa-heart">
+       </i>
+       <span>
+        159
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-comment">
+       </i>
+       <span>
+        50
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-share">
+       </i>
+       <span>
+        2
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-retweet">
+       </i>
+       <span>
+        2
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="post">
+     <div class="user-info">
+      <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+      <div>
+       <div class="username">
+        motivationdaily
+       </div>
+       <div class="time">
+        3h
+       </div>
+      </div>
+     </div>
+     <div class="content">
+      <p>
+       Keep pushing forward, no matter how tough it gets. Your hard work will pay off.
+      </p>
+     </div>
+     <div class="actions">
+      <div class="action">
+       <i class="fas fa-heart">
+       </i>
+       <span>
+        200
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-comment">
+       </i>
+       <span>
+        30
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-share">
+       </i>
+       <span>
+        10
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-retweet">
+       </i>
+       <span>
+        5
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="post">
+     <div class="user-info">
+      <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+      <div>
+       <div class="username">
+        breakupquotes
+       </div>
+       <div class="time">
+        5h
+       </div>
+      </div>
+     </div>
+     <div class="content">
+      <p>
+       Sometimes, the best way to move forward is to let go of what's holding you back.
+      </p>
+     </div>
+     <div class="actions">
+      <div class="action">
+       <i class="fas fa-heart">
+       </i>
+       <span>
+        180
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-comment">
+       </i>
+       <span>
+        40
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-share">
+       </i>
+       <span>
+        15
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-retweet">
+       </i>
+       <span>
+        8
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="post">
+     <div class="user-info">
+      <img alt="User profile picture" height="40" src="https://storage.googleapis.com/a1aa/image/CBBAfixEji3kT6HNdrbPExo2Crf9xkF9mIrJS3RvnDhEGjGUA.jpg" width="40"/>
+      <div>
+       <div class="username">
+        dailyinspiration
+       </div>
+       <div class="time">
+        8h
+       </div>
+      </div>
+     </div>
+     <div class="content">
+      <p>
+       Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.
+      </p>
+     </div>
+     <div class="actions">
+      <div class="action">
+       <i class="fas fa-heart">
+       </i>
+       <span>
+        220
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-comment">
+       </i>
+       <span>
+        35
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-share">
+       </i>
+       <span>
+        12
+       </span>
+      </div>
+      <div class="action">
+       <i class="fas fa-retweet">
+       </i>
+       <span>
+        6
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
   </div>
-  <script>
-   function likePost(element) {
-            if (element.style.color === 'red') {
-                element.style.color = '#888888';
-            } else {
-                element.style.color = 'red';
-            }
-        }
-
-        function commentPost() {
-            alert('Comment functionality is not implemented yet.');
-        }
-
-        function sharePost() {
-            alert('Share functionality is not implemented yet.');
-        }
-
-        function postStatus() {
-            alert('Status update functionality is not implemented yet.');
-        }
-  </script>
  </body>
 </html>
