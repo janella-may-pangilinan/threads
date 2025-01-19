@@ -3,164 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Settings</title>
+    <title>Privacy Settings</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             background-color: #f9f9f9;
-            color: #333;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
-
-        /* Navbar Styles */
-        .navbar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .navbar a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
         .container {
             max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
+            margin: 20px auto;
+            background: white;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: #444;
+            font-size: 24px;
         }
-
-        #flash-messages {
-            margin-bottom: 15px;
-        }
-
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .settings-form {
+        .setting-item {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
         }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
+        .setting-item:last-child {
+            border-bottom: none;
         }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
+        .setting-title {
+            font-size: 16px;
         }
-
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .toggle input {
+            display: none;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 20px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4caf50;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
         select {
-            padding: 10px;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .btn-save {
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .btn-save:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar Section -->
-    <div class="navbar">
-        <a href="ThreadsNewsFeed.html">Home</a>
-        <a href="search.html">Search</a>
-        <a href="activity.html">Activity</a>
-        <a href="settings.html">Settings</a>
-    </div>
-
     <div class="container">
-        <h1>User Settings</h1>
-
-        <!-- Flash Messages -->
-        <div id="flash-messages">
-            <!-- Example Flash Messages -->
-            <!-- <p class="success">Settings updated successfully!</p> -->
-            <!-- <p class="error">Failed to update settings.</p> -->
+        <h1>Privacy Settings</h1>
+        
+        <!-- Account Privacy -->
+        <div class="setting-item">
+            <span class="setting-title">Private Account</span>
+            <label class="toggle">
+                <input type="checkbox" id="privateAccount">
+                <span class="slider"></span>
+            </label>
         </div>
 
-        <form action="/settings/update" method="post" class="settings-form">
-            <div class="form-group">
-                <label for="notification_preferences">Notification Preferences</label>
-                <select name="notification_preferences" id="notification_preferences">
-                    <option value="all">All</option>
-                    <option value="mentions">Mentions Only</option>
-                    <option value="none">None</option>
-                </select>
-            </div>
+        <!-- Hidden Words -->
+        <div class="setting-item">
+            <span class="setting-title">Hidden Words</span>
+            <select id="hiddenWords">
+                <option value="off">Off</option>
+                <option value="custom">Custom</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="privacy">Privacy</label>
-                <select name="privacy" id="privacy">
-                    <option value="public">Public</option>
-                    <option value="private">Private</option>
-                </select>
-            </div>
+        <!-- Limits -->
+        <div class="setting-item">
+            <span class="setting-title">Limits</span>
+            <select id="limits">
+                <option value="off">Off</option>
+                <option value="basic">Basic</option>
+                <option value="strict">Strict</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="theme">Theme</label>
-                <select name="theme" id="theme">
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                </select>
-            </div>
+        <!-- Comments -->
+        <div class="setting-item">
+            <span class="setting-title">Comments</span>
+            <select id="comments">
+                <option value="everyone">Everyone</option>
+                <option value="followers">Followers</option>
+                <option value="noone">No one</option>
+            </select>
+        </div>
 
-            <button type="submit" class="btn-save">Save Settings</button>
-        </form>
+        <!-- Mentions -->
+        <div class="setting-item">
+            <span class="setting-title">Mentions</span>
+            <select id="mentions">
+                <option value="everyone">Everyone</option>
+                <option value="followers">Followers</option>
+                <option value="noone">No one</option>
+            </select>
+        </div>
+
+        <!-- Story Privacy -->
+        <div class="setting-item">
+            <span class="setting-title">Story Privacy</span>
+            <select id="storyPrivacy">
+                <option value="public">Public</option>
+                <option value="friends">Friends</option>
+                <option value="close">Close Friends</option>
+            </select>
+        </div>
     </div>
+
+    <script>
+        // Example: Handle toggle state changes
+        document.getElementById('privateAccount').addEventListener('change', function () {
+            const isPrivate = this.checked;
+            alert(`Private account is now ${isPrivate ? 'enabled' : 'disabled'}.`);
+        });
+
+        // Example: Handle dropdown selections
+        document.getElementById('comments').addEventListener('change', function () {
+            const commentSetting = this.value;
+            alert(`Comments setting updated to: ${commentSetting}`);
+        });
+    </script>
 </body>
 </html>
