@@ -168,6 +168,33 @@
         .account button:hover {
             background-color: #f0f0f0;
         }
+
+        /* Hidden profile section */
+        .profile-section {
+            display: none;
+            padding: 15px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .profile-section img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .profile-section h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .profile-section p {
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -175,98 +202,110 @@
     <div class="sidebar">
         <img alt="Threads logo" src="img/logo.png"/>
         <div class="icons-top">
-         <a href="ThreadsNewsFeed.html" title="Home">
-          <i class="fas fa-home icon active">
-          </i>
-         </a>
-         <a href="search.html" title="Search">
-          <i class="fas fa-search icon">
-          </i>
-         </a>
-         <a href="post.html" title="AddPost">
-            <i class="fas fa-plus icon"></i>
-    </a>
-         <a href="activity.html" title="Activity">
-          <i class="fas fa-heart icon">
-          </i>
-         </a>
-         <a href="viewprofile.html" title="Profile">
-          <i class="fas fa-user icon">
-          </i>
-         </a>
+            <a href="ThreadsNewsFeed.html" title="Home">
+                <i class="fas fa-home icon active"></i>
+            </a>
+            <a href="search.html" title="Search">
+                <i class="fas fa-search icon"></i>
+            </a>
+            <a href="post.html" title="AddPost">
+                <i class="fas fa-plus icon"></i>
+            </a>
+            <a href="activity.html" title="Activity">
+                <i class="fas fa-heart icon"></i>
+            </a>
+            <a href="viewprofile.html" title="Profile">
+                <i class="fas fa-user icon"></i>
+            </a>
         </div>
         <div class="icons-bottom">
-         <i class="fas fa-thumbtack icon" onclick="toggleProfileSection()">
-         </i>
-         <a href="settings.html" title="Settings">
-          <i class="fas fa-bars icon">
-          </i>
-         </a>
+            <i class="fas fa-thumbtack icon" onclick="toggleProfileSection()"></i>
+            <a href="settings.html" title="Settings">
+                <i class="fas fa-bars icon"></i>
+            </a>
         </div>
-     </div>
-     <div class="header">Search</div>
-     <div class="container">
-         <div class="search-bar">
-             <input type="text" id="searchInput" placeholder="Search" onkeyup="searchAccounts()">
-             <i class="fas fa-search"></i>
-         </div>
- 
-         <div class="account" id="account1">
-             <img src="img/1.jpg" alt="Profile">
-             <div class="account-info">
-                 <h4>Janella May Pangilinan</h4>
-                 <p>Fashionista and lifestyle influencer. 1M followers</p>
-             </div>
-             <button>Follow</button>
-         </div>
-         <div class="account" id="account2">
-             <img src="img/2.jpg" alt="Profile">
-             <div class="account-info">
-                 <h4>Irish Jane Magat</h4>
-                 <p>Tech enthusiast and content creator. 230K followers</p>
-             </div>
-             <button>Follow</button>
-         </div>
-         <div class="account" id="account3">
-             <img src="img/3.jpg" alt="Profile">
-             <div class="account-info">
-                 <h4>Aira Mae Magat</h4>
-                 <p>Photography lover. Capturing moments beautifully. 110K followers</p>
-             </div>
-             <button>Follow</button>
-         </div>
-         <div class="account" id="account4">
-             <img src="img/4.jpg" alt="Profile">
-             <div class="account-info">
-                 <h4>Poul Justin Maninang</h4>
-                 <p>Music producer and songwriter. 350K followers</p>
-             </div>
-             <button>Follow</button>
-         </div>
-         <div class="account" id="account5">
-             <img src="img/5.jpg" alt="Profile">
-             <div class="account-info">
-                 <h4>Nick Rghe Dela Cruz</h4>
-                 <p>Fitness enthusiast and personal trainer. 500K followers</p>
-             </div>
-             <button>Follow</button>
-         </div>
-     </div>
- 
-     <script>
-         function searchAccounts() {
-             let input = document.getElementById("searchInput").value.toLowerCase();
-             let accounts = document.querySelectorAll(".account");
- 
-             accounts.forEach(account => {
-                 let accountName = account.querySelector("h4").textContent.toLowerCase();
-                 if (accountName.includes(input)) {
-                     account.style.display = "";
-                 } else {
-                     account.style.display = "none";
-                 }
-             });
-         }
-     </script>
- </body>
- </html>
+    </div>
+
+    <div class="header">Search</div>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search" onkeyup="searchAccounts()">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="account" id="account1">
+            <img src="img/1.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Janella May Pangilinan</h4>
+                <p>Fashionista and lifestyle influencer. 1M followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account" id="account2">
+            <img src="img/2.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Irish Jane Magat</h4>
+                <p>Tech enthusiast and content creator. 230K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account" id="account3">
+            <img src="img/3.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Aira Mae Magat</h4>
+                <p>Photography lover. Capturing moments beautifully. 110K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account" id="account4">
+            <img src="img/4.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Poul Justin Maninang</h4>
+                <p>Music producer and songwriter. 350K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+        <div class="account" id="account5">
+            <img src="img/5.jpg" alt="Profile">
+            <div class="account-info">
+                <h4>Nick Rghe Dela Cruz</h4>
+                <p>Fitness enthusiast and personal trainer. 500K followers</p>
+            </div>
+            <button>Follow</button>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section" id="profileSection">
+        <img src="img/1.jpg" alt="Profile">
+        <h4>Janella May Pangilinan</h4>
+        <p>Fashionista and lifestyle influencer</p>
+    </div>
+
+    <script>
+        function searchAccounts() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let accounts = document.querySelectorAll(".account");
+
+            accounts.forEach(account => {
+                let accountName = account.querySelector("h4").textContent.toLowerCase();
+                if (accountName.includes(input)) {
+                    account.style.display = "";
+                } else {
+                    account.style.display = "none";
+                }
+            });
+        }
+
+        // Function to toggle the profile section visibility
+        function toggleProfileSection() {
+            let profileSection = document.getElementById("profileSection");
+            if (profileSection.style.display === "none" || profileSection.style.display === "") {
+                profileSection.style.display = "block";
+            } else {
+                profileSection.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
