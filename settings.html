@@ -6,99 +6,123 @@
     <title>User Settings</title>
     <style>
         /* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 20px;
-}
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+        }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #444;
-}
+        .navbar a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
 
-#flash-messages {
-    margin-bottom: 15px;
-}
+        .navbar a:hover {
+            text-decoration: underline;
+        }
 
-.success {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
+        }
 
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        #flash-messages {
+            margin-bottom: 15px;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+        .settings-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-.btn-save {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-}
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
 
-.btn-save:hover {
-    background-color: #0056b3;
-}
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
+        .btn-save {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .btn-save:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <!-- Navbar Section -->
+    <div class="navbar">
+        <a href="ThreadsNewsFeed.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="activity.html">Activity</a>
+        <a href="settings.html">Settings</a>
+    </div>
+
     <div class="container">
         <h1>User Settings</h1>
 
