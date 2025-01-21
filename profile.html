@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Threads-Inspired Social Media</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
         * {
             margin: 0;
@@ -11,11 +12,170 @@
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f7f7f7;
             color: #333;
         }
+
+        .sidebar {
+            width: 80px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar img {
+            width: 40px; 
+            margin-bottom: 40px; 
+        }
+
+        .sidebar i {
+            font-size: 24px;
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+
+        .sidebar i:hover {
+            color: #2c3e50; 
+        }
+
+        .icons-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 50%; 
+            width: 100%;
+        }
+
+        .icons-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .sidebar i {
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar img {
+                width: 30px;
+            }
+
+            .sidebar i {
+                font-size: 22px; 
+            }
+        }
+
+        .icons-bottom i {
+            margin-bottom: 20px;
+        }
+
+        .header {
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .search-bar {
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .search-bar input[type="text"] {
+            width: 90%;
+            padding: 10px 40px 10px 30px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #bbb;
+        }
+
+        .account {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .account:last-child {
+            border-bottom: none;
+        }
+
+        .account img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .account-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .account-info h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .account-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .account button {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #0078ff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .account button:hover {
+            background-color: #f0f0f0;
+        }
+
+        
 
         .header {
             display: flex;
@@ -194,9 +354,35 @@
         .post-footer button i {
             font-size: 18px;
         }
+
+        
     </style>
 </head>
 <body>
+
+    
+    <div class="sidebar">
+        <img src="img/logo.png" alt="Threads logo" />
+        <div class="icons-top">
+            <a href="ThreadsNewsFeed.html" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="search.html" title="Search">
+                <i class="fas fa-search"></i>
+            </a>
+            <i class="fas fa-plus-square"></i>
+            <a href="activity.html" title="Activity">
+                <i class="fas fa-heart"></i>
+            </a>
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="icons-bottom">
+            <i class="fas fa-thumbtack"></i>
+            <a href="settings.html" title="Settings">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
 
     
 
@@ -217,6 +403,8 @@
         <div class="tabs">
             <a href="profile.html" class="active">Threads</a>
             <a href="repost.html">Reposts</a>
+            
+
         </div>
 
         <div class="posts">
