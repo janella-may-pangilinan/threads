@@ -196,6 +196,16 @@
         .profile-section.closed {
             transform: translateX(100%);
         }
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
 
     </style>
 </head>
@@ -340,6 +350,19 @@
                 profileSection.classList.add('closed');
             }
         }
+
     </script>
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="logoutButton" class="logout-button">Logout</button>
+    </div>
+</div>
+
+<script>
+    // Function for Logout Button
+    document.getElementById("logoutButton").addEventListener("click", function () {
+        alert("You have been logged out."); // Optional alert message
+        window.location.href = "index.html"; // Redirect to the login form
+    });
+</script>
 </body>
 </html>
