@@ -6,14 +6,15 @@
     <title>Privacy Settings</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             flex-direction: column;
         }
@@ -53,33 +54,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            height: 50%;
         }
 
         .icons-bottom {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 50px;
-        }
-
-        .icons-bottom i {
+            margin-top: auto;
             margin-bottom: 20px;
         }
 
         /* Content Styles */
         .container {
             margin-left: 100px;
-            width: calc(100% - 100px); /* Adjust width to fit remaining space */
+            width: calc(100% - 100px);
             max-width: 800px;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
             overflow-y: auto;
-            border: 1px solid #ddd; /* Added border for distinction */
+            border: 1px solid #ddd;
         }
 
         h1 {
@@ -105,98 +100,31 @@
             font-size: 16px;
         }
 
-        .toggle {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-        }
-
-        .toggle input {
-            display: none;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 20px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: #4caf50;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(20px);
-        }
-
         select {
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        /* Profile Section Styles */
-        .profile-section {
-            display: none;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            left: 100px;
-            top: 20px;
-            width: 300px;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .profile-section a {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #2c3e50;
-            font-size: 16px;
-        }
-
-        .profile-section a:hover {
-            color: #3498db;
-        }
-
-        .profile-section input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
+        /* Logout Button Styles */
+        .logout-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
-        .profile-section.open {
-            transform: translateX(0);
+        .logout-button:hover {
+            background-color: #c0392b;
         }
 
-        .profile-section.closed {
-            transform: translateX(100%);
+        .logout-button:active {
+            transform: scale(0.98);
         }
-
     </style>
 </head>
 <body>
@@ -211,7 +139,7 @@
                 <i class="fas fa-search"></i>
             </a>
             <a href="post.html" title="Post">
-                <i class="fas fa-plus icon"></i>
+                <i class="fas fa-plus"></i>
             </a>
             <a href="activity.html" title="Activity">
                 <i class="fas fa-heart"></i>
@@ -221,7 +149,6 @@
             </a>
         </div>
         <div class="icons-bottom">
-            <i class="fas fa-thumbtack" onclick="toggleProfileSection()"></i>
             <a href="settings.html" title="Settings">
                 <i class="fas fa-bars"></i>
             </a>
@@ -231,7 +158,8 @@
     <!-- Main Content -->
     <div class="container">
         <h1>Privacy Settings</h1>
-        <!-- Account Privacy -->
+
+        <!-- Settings List -->
         <div class="setting-item">
             <span class="setting-title">Private Account</span>
             <label class="toggle">
@@ -240,7 +168,6 @@
             </label>
         </div>
 
-        <!-- Hidden Words -->
         <div class="setting-item">
             <span class="setting-title">Hidden Words</span>
             <select id="hiddenWords">
@@ -249,17 +176,6 @@
             </select>
         </div>
 
-        <!-- Limits -->
-        <div class="setting-item">
-            <span class="setting-title">Limits</span>
-            <select id="limits">
-                <option value="off">Off</option>
-                <option value="basic">Basic</option>
-                <option value="strict">Strict</option>
-            </select>
-        </div>
-
-        <!-- Comments -->
         <div class="setting-item">
             <span class="setting-title">Comments</span>
             <select id="comments">
@@ -269,77 +185,18 @@
             </select>
         </div>
 
-        <!-- Mentions -->
-        <div class="setting-item">
-            <span class="setting-title">Mentions</span>
-            <select id="mentions">
-                <option value="everyone">Everyone</option>
-                <option value="followers">Followers</option>
-                <option value="noone">No one</option>
-            </select>
+        <!-- Logout Button -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="logoutButton" class="logout-button">Logout</button>
         </div>
-
-        <!-- Story Privacy -->
-        <div class="setting-item">
-            <span class="setting-title">Story Privacy</span>
-            <select id="storyPrivacy">
-                <option value="public">Public</option>
-                <option value="friends">Friends</option>
-                <option value="close">Close Friends</option>
-            </select>
-        </div>
-
-        <!-- About -->
-        <div class="setting-item">
-            <span class="setting-title">About</span>
-            <select id="limits">
-                <option value="About your profile">About your profile</option>
-                <option value="Meta Privacy Policy">Meta Privacy Policy</option>
-                <option value="Meta Terms of Use">Meta Terms of Use</option>
-                <option value="Threads Terms of Use">Threads Terms of Use</option>
-                <option value="Third Party Notices">Third Party Notices</option>
-            </select>
-        </div>
-
-        <!-- Help -->
-        <div class="setting-item">
-            <span class="setting-title">Help</span>
-            <select id="storyPrivacy">
-                <option value="Help Center">Help Center</option>
-                <option value="Report a problem">Report a problem</option>
-                <option value="Support requests">Support requests</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- Profile Section (Hidden by default) -->
-    <div class="profile-section" id="profileSection">
-        <input placeholder="Search keywords and profiles" type="text"/>
-        <a href="#">For you</a>
-        <a href="#">Following</a>
-        <a href="#">Liked</a>
-        <a href="#">Saved</a>
-        <a href="#">Search</a>
-        <a href="#">Activity</a>
-        <a href="#">Profile</a>
-        <a href="#">Insights</a>
-        <a href="#">Custom feeds</a>
     </div>
 
     <script>
-        // Function to toggle profile section visibility
-        function toggleProfileSection() {
-            var profileSection = document.getElementById('profileSection');
-            if (profileSection.style.display === 'none' || profileSection.style.display === '') {
-                profileSection.style.display = 'block';
-                profileSection.classList.add('open');
-                profileSection.classList.remove('closed');
-            } else {
-                profileSection.style.display = 'none';
-                profileSection.classList.remove('open');
-                profileSection.classList.add('closed');
-            }
-        }
+        // Logout Button Functionality
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            alert("You have been logged out.");
+            window.location.href = "login.html"; // Redirect to the login page
+        });
     </script>
 </body>
 </html>
