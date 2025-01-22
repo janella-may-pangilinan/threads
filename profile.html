@@ -175,8 +175,6 @@
             background-color: #f0f0f0;
         }
 
-        
-
         .header {
             display: flex;
             align-items: center;
@@ -191,6 +189,7 @@
             color: #444;
         }
 
+        
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -307,10 +306,18 @@
             margin-bottom: 10px;
         }
 
+        .post-header .profile-picture img {
+            width: 40px; /* Even smaller size */
+            height: 40px; /* Keep it square */
+            border-radius: 50%; /* Circular shape */
+            margin-right: 10px; /* Adjust the spacing */
+        }
+
         .post-header .poster {
             font-size: 14px;
             font-weight: bold;
             color: #333;
+            margin-right: auto;
         }
 
         .post-header .date {
@@ -355,7 +362,6 @@
             font-size: 18px;
         }
 
-        
     </style>
 </head>
 <body>
@@ -403,13 +409,14 @@
         <div class="tabs">
             <a href="profile.html" class="active">Threads</a>
             <a href="repost.html">Reposts</a>
-            
-
         </div>
 
         <div class="posts">
             <div class="post">
                 <div class="post-header">
+                    <div class="profile-picture">
+                        <img src="img/me.jpg" alt="Post Image">
+                    </div>
                     <span class="poster">Irish Jane Magat</span>
                     <span class="date">09/13/2024</span>
                 </div>
@@ -420,11 +427,14 @@
                     <button><i>💬</i> 100</button>
                     <button><i>🔁</i> 8</button>
                     <button><i>🔗</i> 20</button>
-            </div>
+                </div>
             </div>
 
             <div class="post">
                 <div class="post-header">
+                    <div class="profile-picture">
+                        <img src="img/me.jpg" alt="Post Image">
+                    </div>
                     <span class="poster">Irish Jane Magat</span>
                     <span class="date">09/14/2024</span>
                 </div>
@@ -435,11 +445,14 @@
                     <button><i>💬</i> 89</button>
                     <button><i>🔁</i> 27</button>
                     <button><i>🔗</i> 18</button>
-            </div>
+                </div>
             </div>
 
             <div class="post">
                 <div class="post-header">
+                    <div class="profile-picture">
+                        <img src="img/me.jpg" alt="Post Image">
+                    </div>
                     <span class="poster">Irish Jane Magat</span>
                     <span class="date">09/15/2024</span>
                 </div>
@@ -450,42 +463,8 @@
                     <button><i>💬</i> 200</button>
                     <button><i>🔁</i> 70</button>
                     <button><i>🔗</i> 10</button>
-            </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <span class="poster">Irish Jane Magat</span>
-                    <span class="date">09/14/2024</span>
                 </div>
-                <p>Enjoying a sunny day!</p>
-                <img src="img/dd.jpg" alt="Post Image">
-                <div class="post-footer">
-                    <button><i>❤️</i> 800</button>
-                    <button><i>💬</i> 89</button>
-                    <button><i>🔁</i> 27</button>
-                    <button><i>🔗</i> 18</button>
             </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <span class="poster">Irish Jane Magat</span>
-                    <span class="date">09/14/2024</span>
-                </div>
-                <p>Enjoying a sunny day!</p>
-                <img src="img/ee.jpg" alt="Post Image">
-                <div class="post-footer">
-                    <button><i>❤️</i> 800</button>
-                    <button><i>💬</i> 89</button>
-                    <button><i>🔁</i> 27</button>
-                    <button><i>🔗</i> 18</button>
-            </div>
-            </div>
-
-            
-
-
         </div>
 
     </div>
